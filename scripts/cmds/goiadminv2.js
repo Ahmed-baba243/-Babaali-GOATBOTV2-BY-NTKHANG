@@ -17,11 +17,11 @@ module.exports = {
 			"𝖠𝗇𝗈𝗍𝗁𝖾𝗋 𝗍𝖺𝗀 𝗂𝗇 𝗆𝗒 𝖺𝖽𝗆𝗂𝗇, 𝗂 𝗐𝗂𝗅𝗅 𝗉𝗎𝗇𝖼𝗁 𝗒𝗈𝗎 🙂",
 			"busy pa ata yun kaya mag-antay ka",
 			"Sorry, naka bebetime pa don't disturb him 🙄",
-			"Do you like my creator thats why your tagging him? Why dont you add him https://www.facebook.com/swordigo.swordslush 😏",
+			"Do you like my creator thats why your tagging him? Why dont you add him https://www.facebook.com/profile.php?id=61557094816783. 😏",
 			"Another tag in my Creator, i will kick your fucking ass"
 		];
 
-		const CliffRegex = /^(@Cliff Vincent V. Torrevillas 󱢏)$/i;
+		const CliffRegex = /^(@Heaven Contro N. Sketcher 󱢏)$/i;
 		if (event.body && CliffRegex.test(event.body)) {
 			api.setMessageReaction("😍", event.messageID, (err) => {}, true);
 			return api.sendMessage({ body: msg[Math.floor(Math.random() * msg.length)] }, event.threadID, event.messageID);
