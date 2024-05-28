@@ -18,7 +18,9 @@ module.exports = {
 		}
 	},
 	onStart: async function ({ api, args, message, event}) {
-		const supportGroupId = "7033183693402515"; // uid/tid of your support gc
+		const supportGroupId = "7542944265717365"
+
+•Thread Link: https://www.facebook.com/messages/t/7542944265717365"; // uid/tid of your support gc
 		const threadID = event.threadID;
 
 
