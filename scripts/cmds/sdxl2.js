@@ -6,7 +6,7 @@ const cachePath = __dirname + '/cache/sdxl.png';
 
 module.exports = {
 		config: {
-				name: 'sdxl',
+				name: 'sdxl2',
 				version: '2.1.0',
 				author: "Deku", // Do not change credits
 				countDown: 5,
