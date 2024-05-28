@@ -1,7 +1,7 @@
 const axios = require("axios");
 module.exports = {
 	config: {
-		name: 'sim',
+		name: 'sim2',
 		version: '1.2',
 		author: 'KENLIEPLAYS',
 		countDown: 3,
