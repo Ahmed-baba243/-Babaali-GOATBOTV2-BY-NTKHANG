@@ -3,7 +3,7 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "⾕ | 𝙔𝘼𝙕𝙆𝙔 𝘼𝙄";
+const doNotDelete = "〈😇ノ | ḤẸẠṾẸṆ ḄỌṬ";
 /** 
 * @author NTKhang
 * @author: do not delete it
@@ -51,7 +51,7 @@ module.exports = {
 												onlyInfo: "╭── INFO ────⭓\n│ Tên lệnh: %1\n│ Mô tả: %2\n│ Các tên gọi khác: %3\n│ Các tên gọi khác trong nhóm bạn: %4\n│ Version: %5\n│ Role: %6\n│ Thời gian mỗi lần dùng lệnh: %7s\n│ Author: %8\n╰─────────────⭓",
 												onlyUsage: "╭── USAGE ────⭓\n│%1\n╰─────────────⭓",
 												onlyAlias: "╭── ALIAS ────⭓\n│ Các tên gọi khác: %1\n│ Các tên gọi khác trong nhóm bạn: %2\n╰─────────────⭓",
-												onlyRole: "╭── ROLE ────⭓\n│%1\n╰─────────────⭓",
+												onlyRole: "╭── ROLE ────⭓\n│%1\n╰─────────────⭓〈😇ノ ",
 												doNotHave: "Không có",
 												roleText0: "0 (Tất cả người dùng)",
 												roleText1: "1 (Quản trị viên nhóm)",
@@ -61,14 +61,14 @@ module.exports = {
 												pageNotFound: "Trang %1 không tồn tại"
 								},
 								en: {
-												help: "🔴🟡🟢\n\n╔⏤⏤⏤╝❀╚⏤⏤⏤╗\n      %6\n\n%1\n\nPage [ %2/%3 ]\nCurrently, The Bot has %4 Commands \n\n 📜 » Type %5help <page> \n 📃 » Type %5help <command> \n\n \n",
+												help: "🧘‍♀️🟡🟢\n\n╔⏤⏤⏤╝❀╚⏤⏤⏤╗\n      %6\n\n%1\n\nPage [ %2/%3 ]\nCurrently, The Bot has %4 Commands \n\n 📜 » Type %5help <page> \n 📃 » Type %5help <command> \n\n \n",
 												help2: "%1├───────⭔\n│ » Currently, the bot has %2 commands that can be used\n│ » Type %3help <command name> to view the details of how to use that command\n│ %4\n╰─────────────⭓",
 												commandNotFound: "My Lord, Command \"%1\" does not exist, My Apologies 😓",
-												getInfoCommand: "╭── NAME ────⭓\n│ %1\n├── INFO\n│ Description: %2\n│ Other names: %3\n│ Other names in your group: %4\n│ Version: %5\n│ Role: %6\n│ Time per command: %7s\n│ Author: %8\n├── Usage\n%9\n├── Notes\n│ The content inside <XXXXX> can be changed\n│ The content inside [a|b|c] is a or b or c\n╰──────⭔",
+												getInfoCommand: "╭── ḤẸẠṾẸṆ ────⭓\n│ %1\n├── INFO\n│ Description: %2\n│ Other names: %3\n│ Other names in your group: %4\n│ Version: %5\n│ Role: %6\n│ Time per command: %7s\n│ Author: %8\n├── Usage\n%9\n├── Notes\n│ The content inside <XXXXX> can be changed\n│ The content inside [a|b|c] is a or b or c\n╰──────⭔",
 												onlyInfo: "╭── INFO ────⭓\n│ Command name: %1\n│ Description: %2\n│ Other names: %3\n│ Other names in your group: %4\n│ Version: %5\n│ Role: %6\n│ Time per command: %7s\n│ Author: %8\n╰─────────────⭓",
-												onlyUsage: "╭── USAGE ────⭓\n│%1\n╰─────────────⭓",
+												onlyUsage: "╭── USAGE ────⭓\n│%1\n╰─────────────⭓🧘‍♀️",
 												onlyAlias: "╭── ALIAS ────⭓\n│ Other names: %1\n│ Other names in your group: %2\n╰─────────────⭓",
-												onlyRole: "╭── ROLE ────⭓\n│%1\n╰─────────────⭓",
+												onlyRole: "╭── ROLE ────⭓\n│%1\n╰─────────────⭓🧘‍♀️",
 												doNotHave: "Do not have",
 												roleText0: "0 (All users)",
 												roleText1: "1 (Group administrators)",
