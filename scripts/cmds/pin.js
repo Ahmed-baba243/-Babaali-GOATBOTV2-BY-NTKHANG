@@ -1,94 +1,65 @@
-const axios = require('axios');
-const fs = require('fs-extra');
-
+const axios = require("axios");
+const fs = require("fs-extra");
+const path = require("path");
+const request = require("request");
+/*Do not change
+        the credit 🐢👑🥴*/
+ 
 module.exports = {
-	config: {
-		name: 'Pin',
-		aliases: ["pint", "pinter"],
-		version: '1.2',
-		author: 'Samuel',
-		countDown: 5,
-		role: 0,
-		category: 'Image Search',
-		shortDescription: {
-			en: "Search for images on \n| Pinterest based on a keyword",
-		},
-		longDescription: {
-			en: "This command searches for images on Pinterest based on a provided keyword.",
-		},
-		guide: {
-			en: "{pn} 'keyword' -'number of search results'\nExample: {pn} cute -10\nIf no number is provided, the command will return the first 5 images.",
-		},
-	},
+  config: {
+    name: "pin",
+    aliases: ["pinterest"],
+    version: "1.0",
+    author: "𝐀𝐒𝐈𝐅 𝐱𝟔𝟗",
+    role: 0,
+    countDown: 20,
+    description: {
+      en: "Get Image From Pinterest",
+    },
+    category: "Search",
+    guide: {
+      en: "{pn} <search query> <number of images>\nExample: {pn} Hacker -10"
+    },
+    langs: {
+      "en": {
+          "missing": '{pn} anime girl - 10'
+      }
+    }
+  },
 
-	onStart: async function ({ api, args, event , message }) {
-		const { getPrefix } = global.utils;
-			 const p = getPrefix(event.threadID);
-		const approvedmain = JSON.parse(fs.readFileSync(`${__dirname}/assist_json/approved_main.json`));
-		const bypassmain = JSON.parse(fs.readFileSync(`${__dirname}/assist_json/bypass_id.json`));
-		const bypassmUid = event.senderID;
-		if (bypassmain.includes(bypassmUid)) {
-			console.log(`User ${bypassmUid} is in bypass list. Skipping the main approval check.`);
-		} else {
-			const threadmID = event.threadID;
-			if (!approvedmain.includes(threadmID)) {
-				const msgSend = message.reply(`cmd 'Pinterest' is locked 🔒...\n Reason : Bot's main cmd \nyou need permission to use all main cmds.\n\nType ${p}requestMain to send a request to admin`);
-				setTimeout(async () => {
-					message.unsend((await msgSend).messageID);
-				}, 40000);
-				return;
-			}
-		}  
-
-
-
-
-
-		let keyword = args.join(' ');
-		let numberSearch = 4;
-		const match = keyword.match(/(.+?)\s*-?(\d+)?$/);
-		if (match) {
-			keyword = match[1].trim();
-			if (match[2]) {
-				numberSearch = parseInt(match[2]);
-			}
-		}
-
-		if (!keyword) {
-			api.sendMessage("Please provide a keyword.\nExample: Pinterest cute anime boy -10", event.threadID, event.messageID);
-			return;
-		}
-
-		if (numberSearch > 20) {
-			api.sendMessage("Maximum number of search results is 20.", event.threadID, event.messageID);
-			return;
-		}
-
-		try {
-			const res = await axios.get(`https://api-dien.kira1011.repl.co/pinterest?search=${encodeURIComponent(keyword)}`);
-			const data = res.data.data;
-			let num = 0;
-			const img = [];
-
-			for (let i = 0; i < numberSearch; i++) {
-				const path = __dirname + `/tmp/${num += 1}.jpg`;
-				const getDown = (await axios.get(`${data[i]}`, { responseType: 'arraybuffer' })).data;
-				fs.writeFileSync(path, Buffer.from(getDown, 'utf-8'));
-				img.push(fs.createReadStream(path));
-			}
-
-			api.sendMessage({
-				body: `${numberSearch} search results for keyword: ${keyword}`,
-				attachment: img
-			}, event.threadID, event.messageID);
-
-			for (let ii = 1; ii < numberSearch; ii++) {
-				fs.unlinkSync(__dirname + `/tmp/${ii}.jpg`);
-			}
-		} catch (err) {
-			console.error(err);
-			api.sendMessage("Your search Input in Disallowed in Pinterest.", event.threadID, event.messageID);
-			return;
-		}
-	}
-};
+  onStart: async function ({ api, event, args, message }) {
+    try {
+    const keySearch = args.join(" ");
+  const { spotify, pintarest } = require('nayan-server')
+    if(keySearch.includes("-") == false) 
+      return message.reply("Please enter the search query and - number of images (1-50)", event.threadID, event.messageID)
+    const keySearchs = keySearch.substr(0, keySearch.indexOf('-'))
+    const numberSearch = keySearch.split("-").pop() || 6
+    const res = await pintarest(`${encodeURIComponent(keySearchs)}`);
+  console.log(res)
+    const data = res.data;
+    var num = 0;
+    var imgData = [];
+    for (var i = 0; i < parseInt(numberSearch); i++) {
+      let path = __dirname + `/cache/${num+=1}.jpg`;
+      let getDown = (await axios.get(`${data[i]}`, { responseType: 'arraybuffer' })).data;
+      fs.writeFileSync(path, Buffer.from(getDown, 'utf-8'));
+      imgData.push(fs.createReadStream(__dirname + `/cache/${num}.jpg`));
+    }
+    message.reply({
+        attachment: imgData,
+        body: numberSearch + ' images for '+ keySearchs
+    }, event.threadID, event.messageID)
+    for (let ii = 1; ii < parseInt(numberSearch); ii++) {
+        fs.unlinkSync(__dirname + `/cache/${ii}.jpg`)
+    };
+      } catch (error) {
+      console.error(error);
+      return api.sendMessage(
+        `An error occurred.`,
+        event.threadID,
+        event.messageID
+      );
+}
+}
+	  }
